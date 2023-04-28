@@ -16,3 +16,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.password-table {
+    margin-top: 4rem;
+}

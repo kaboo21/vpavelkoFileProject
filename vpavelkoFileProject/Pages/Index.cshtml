@@ -5,5 +5,56 @@
 }
 
 <div>
-    <h4>Single File Upload</h4>
+    <h4>Choose txt file with passwords</h4>
+    <form class="form-group" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <button type="submit">Submit</button>
+    </form>
 </div>
+
+<table class="table password-table">
+    <thead>
+        <tr>
+            <th>Password</th>
+            <th>Repeating character</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>IsValid</th>
+        </tr>
+    </thead>
+    @if (Model.passwordDetailsList.Count > 0)
+    {
+        <tbody>
+            @foreach (var item in Model.passwordDetailsList)
+            {
+                @if (item.IsValidImputLine)
+                {
+                    <tr>
+                        <td>@item.Password</td>
+                        <td>@item.Char</td>
+                        <td>@item.MinRepeats</td>
+                        <td>@item.MaxRepeats</td>
+                        <td>@item.IsValidPassword</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>Not valid input line</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+
+        
+    }
+</table>
+
+<h4>
+    Number of valid passwords - @Model.ValidPasswordNumber
+</h4>
